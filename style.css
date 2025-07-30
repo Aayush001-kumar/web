@@ -747,3 +747,55 @@ button:hover,
     transform: scale(1.03);
     box-shadow: 0 4px 12px rgba(0, 204, 255, 0.15);
 }
+.task-tracker {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #ffffff18;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  color: #fff;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px #22222290;
+}
+
+.task-tracker h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffc600;
+  text-align: center;
+}
+
+.task-box p {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.task-box textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: none;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+  margin-top: 1rem;
+  background: #1c1c1caa;
+  color: #fff;
+}
+
+.task-box button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  background-color: #00ff9d;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.task-box button:hover {
+  background-color: #00c37e;
+}

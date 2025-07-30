@@ -374,17 +374,29 @@ function generateSmartSuggestions() {
 
 // Run when page loads
 generateSmartSuggestions();
-checkbox.addEventListener("change", () => {
-    localStorage.setItem(id, checkbox.checked);
-    generateSmartSuggestions(); // Update suggestions live
-});
+const checkbox = document.getElementById("your-checkbox-id");
+if (checkbox) {
+    checkbox.addEventListener("change", () => {
+        localStorage.setItem(id, checkbox.checked);
+        generateSmartSuggestions();
+    });
+}
+
+
 const itachiQuotes = [
     "Those who turn their hands against their comrades are sure to die a terrible death.",
     "Knowledge and awareness are vague, and perhaps better called illusions.",
-    "People live their lives bound by what they accept as correct and true.",
+    "My Motto Is To Be Stronger Than Yesterday. If I Have To, I will Be Stronger Than Half a Day Ago, Even a Minute Ago!",
     "You and I are flesh and blood. I'm always going to be there for you.",
-    "Even the strongest of opponents always have a weakness.",
-    "No matter what darkness or contradictions lie within the village, I am still Itachi Uchiha of the Leaf."
+    "Even the strongest of opponents always have a weakness, Even neet.",
+    "No matter what darkness or contradictions lie within the world, you are still Miyu the bender of the faith.",
+    "The Ticket To the Future Is Always Blank.",
+    "The Moment You Think of Giving Up, Think of the Reason Why You Held on So Long.",
+    "You Can’t Gain Anything Without Losing Something First.",
+    "Remember the Lesson, Not the Disappointment.",
+    "If something is possible, carry on as planned. Even if it isn't possible, do it anyway.",
+    "Give up on your dreams and die.",
+    "You can’t sit around envying other people’s worlds. You have to go out and change your own.",
 ];
 
 function showRandomQuote() {
@@ -433,3 +445,59 @@ function loadVideo(videoId) {
     const player = document.getElementById('motivational-video');
     player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
 }
+// const today = new Date().toISOString().split("T")[0]; // "2025-08-01"
+// const task = neetRoadmap[today];
+
+// if (task) {
+//     const taskBox = document.getElementById("today-task");
+//     taskBox.innerHTML = `
+//         <h2>📚 ${task.subject} – ${task.chapter}</h2>
+//         <p><strong>Topics:</strong> ${task.topics.join(", ")}</p>
+//         <p><strong>Task:</strong> ${task.task}</p>
+//         <textarea id="notes" placeholder="Add your notes or difficulty rating here..." rows="3"></textarea>
+//         <br>
+//         <button onclick="markDone()">✅ Mark as Done</button>
+//     `;
+// }
+
+// function markDone() {
+//     localStorage.setItem(`done-${today}`, "true");
+//     alert("Marked as done! 🔥 Keep going, Miyu!");
+// }
+
+window.onload = function () {
+    const today = new Date();
+    const todayStr = today.toISOString().split("T")[0]; // Format: YYYY-MM-DD
+    const taskData = neetRoadmap[todayStr];
+    const taskBox = document.getElementById("today-task");
+
+    if (taskData) {
+        const { subject, chapter, topics, task } = taskData;
+
+        const html = `
+      <p><strong>📘 Subject:</strong> ${subject}</p>
+      <p><strong>📖 Chapter:</strong> ${chapter}</p>
+      <p><strong>🧩 Topics:</strong> ${topics.join(", ")}</p>
+      <p><strong>📌 Task:</strong> ${task}</p>
+      <textarea id="note" placeholder="Write where you got stuck..."></textarea>
+      <button onclick="markAsDone()">✅ Mark as Done</button>
+    `;
+
+        taskBox.innerHTML = html;
+
+        // Load saved note if available
+        const savedNote = localStorage.getItem(todayStr + "_note");
+        if (savedNote) {
+            document.getElementById("note").value = savedNote;
+        }
+    } else {
+        taskBox.innerHTML = "<p>No task scheduled for today 📭</p>";
+    }
+};
+
+window.markAsDone = function () {
+    const note = document.getElementById("note").value;
+    localStorage.setItem(todayStr + "_note", note);
+    localStorage.setItem(todayStr + "_done", "true");
+    alert("Task marked as done and note saved! ✅");
+};
