@@ -150,7 +150,7 @@ footer {
     background-color: #444;
 }
 
-.weekly-planner {
+/* .weekly-planner {
     margin-top: 2rem;
     background-color: #1e1e1e;
     padding: 1.5rem;
@@ -225,9 +225,9 @@ footer {
     border-radius: 6px;
     resize: vertical;
     font-size: 0.75rem;
-}
+} */
 
-.calendar-roadmap details {
+/* .calendar-roadmap details {
     margin-top: 1rem;
     background-color: #2c2c2c;
     border-radius: 8px;
@@ -239,6 +239,45 @@ footer {
     font-weight: bold;
     color: #ffd6a5;
     cursor: pointer;
+} */
+ /* #progress-bar-wrapper {
+  width: 100%;
+  height: 25px;
+  background-color: #eee;
+  border-radius: 20px;
+  margin: 10px 0;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+#progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%;
+  border-radius: 20px;
+  transition: width 0.4s ease-in-out;
+}
+#progress-percent {
+  font-weight: bold;
+  font-size: 1.1em;
+} */
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background-color: #2c2f33; /* Darker background */
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Hide the overflow during the transition */
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%; /* Initial state */
+    background-color: #e91e63; /* Pink color */
+    border-radius: 6px;
+    transition: width 0.5s ease-in-out; /* Smooth transition for the progress bar */
 }
 
 .progress-tracker {
@@ -799,3 +838,173 @@ button:hover,
 .task-box button:hover {
   background-color: #00c37e;
 }
+/* 🌒 Dark Mode Container */
+#difficulty-tracker {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #1e1f26;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+  transition: box-shadow 0.3s ease;
+  color: #e0e0e0;
+}
+
+#difficulty-tracker:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* 📊 Heading */
+#difficulty-tracker h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #82aaff;
+  text-align: center;
+}
+
+/* 🔖 Labels */
+#difficulty-tracker label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #c8d3f5;
+}
+
+/* ⬇️ Dropdowns */
+#difficulty-tracker select {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 6px;
+  border: 1px solid #3a3d4d;
+  border-radius: 10px;
+  background-color: #2c2e3a;
+  color: #e0e0e0;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+#difficulty-tracker select:hover {
+  border-color: #82aaff;
+  background-color: #353849;
+}
+
+/* 📝 Textarea */
+#difficulty-tracker textarea {
+  width: 100%;
+  min-height: 100px;
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #3a3d4d;
+  resize: vertical;
+  font-size: 15px;
+  background-color: #2c2e3a;
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+#difficulty-tracker textarea:hover,
+#difficulty-tracker textarea:focus {
+  border-color: #82aaff;
+  background-color: #353849;
+  box-shadow: 0 0 10px rgba(130, 170, 255, 0.1);
+}
+
+/* 💾 Button */
+#difficulty-tracker button {
+  margin-top: 20px;
+  padding: 12px 18px;
+  background-color: #3b4b88;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#difficulty-tracker button:hover {
+  background-color: #5a74f2;
+  transform: scale(1.03);
+}
+
+#progress-container {
+    width: 100%;
+    height: 25px;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 15px 0;
+    border: 1px solid #555;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #00ff88;
+    transition: width 0.5s ease;
+}
+
+#user-difficulty-logs {
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 30px;
+  color: #f1f1f1;
+}
+
+#log-subject-filter {
+  background-color: #2a2a2a;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.logs-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.log-entry {
+  background-color: #2c2c2c;
+  padding: 15px;
+  border-radius: 10px;
+  transition: background 0.3s;
+  border-left: 4px solid #00bcd4;
+}
+
+.log-entry:hover {
+  background-color: #353535;
+}
+
+.log-entry h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #00e676;
+}
+
+.log-entry p {
+  margin: 6px 0;
+  color: #ccc;
+}
+.logs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.log-entry {
+  background-color: #1f1f1f;
+  border-left: 5px solid #00b894;
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+}
+

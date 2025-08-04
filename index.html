@@ -55,243 +55,346 @@
                     </ul>
                 </div>
             </div> -->
+
                             <!-- <div id="today-task" class="focus-timer"></div> -->
                             <!-- <h2>📝 Today's Task</h2> -->
                             <section class="task-tracker">
-                                <h1>📅 Today's NEET Task</h1>
-                                <div id="today-task"></div>
-                                <!-- class="task-box">
+                                <div id="progress-container">
+                                    <div id="progress-bar"></div>
+                                </div>
+
+                                <h1>📅 Today's Task</h1>
+                                <button id="mark-complete">✅ Mark Today's Task as Complete</button>
+
+                                <!-- <div id="today-task"></div> -->
+                                <div id="daily-task-box"></div>
+                                <div id="difficulty-tracker">
+                                    <h2>📊 Difficulty Log</h2>
+
+                                    <div>
+                                        <label for="subject">Subject:</label>
+                                        <!-- Subject Dropdown -->
+                                        <select id="subject">
+                                            <option value="Physics">Physics</option>
+                                            <option value="Chemistry">Chemistry</option>
+                                            <option value="Biology">Biology</option>
+                                        </select>
+
+                                        <label for="chapter">Chapter:</label>
+                                        <!-- Chapter Dropdown -->
+                                        <select id="chapter"></select>
+
+
+                                        <label for="difficulty-note">Difficulty Note:</label>
+                                        <textarea id="difficulty-note" placeholder="Enter your note..."></textarea>
+
+                                        <label for="level">Difficulty Level:</label>
+                                        <select id="level">
+                                            <option value="Easy">Easy</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Hard">Hard</option>
+                                        </select>
+
+                                        <button id="save-difficulty">Save</button>
+                                    </div>
+                                    <div id="backlogContainer"></div>
+
+                                    <!-- class="task-box">
                                      JS will inject task content here -->
-                        </div>
-                        </section>
-
-
-
-                        <div class="focus-timer">
-                            <h2>🎯 Focus Timer</h2>
-
-                            <div class="flip-clock">
-                                <div class="flip-card" id="hr-card">
-                                    <div class="top" id="hr-front">00</div>
-                                    <div class="bottom" id="hr-back">00</div>
                                 </div>
-                                <div class="colon">:</div>
-                                <div class="flip-card" id="min-card">
-                                    <div class="top" id="min-front">00</div>
-                                    <div class="bottom" id="min-back">00</div>
-                                </div>
-                                <div class="colon">:</div>
-                                <div class="flip-card" id="sec-card">
-                                    <div class="top" id="sec-front">00</div>
-                                    <div class="bottom" id="sec-back">00</div>
-                                </div>
-                            </div>
-
-
-                            <div class="btns">
-                                <button onclick="startTimer()">Start</button>
-                                <button onclick="pauseTimer()">Pause</button>
-                                <button onclick="resetTimer()">Reset</button>
-                            </div>
-
-                            <div class="timer-settings">
-                                <label for="preset-select">Choose Duration:</label>
-                                <select id="preset-select">
-                                    <option value="1500">25 min (Pomodoro)</option>
-                                    <option value="3600">1 hour</option>
-                                    <option value="10800">3 hours (NEET Practice)</option>
-                                    <option value="custom">Custom</option>
+                            </section>
+                            <div id="user-difficulty-logs">
+                                <h2>📚 My Difficulty Notes</h2>
+                                <label for="log-subject-filter">Filter by Subject:</label>
+                                <select id="log-subject-filter">
+                                    <option value="All">All</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Biology">Biology</option>
                                 </select>
-                                <input type="number" id="custom-minutes" placeholder="Enter minutes"
-                                    style="display:none; margin-top: 0.5rem;" />
+                                <button id="view-logs">View Logs</button>
+                                <div id="logs-container" class="logs-grid"></div>
+                            </div>
+
+                            <div class="focus-timer">
+                                <h2>🎯 Focus Timer</h2>
+
+                                <div class="flip-clock">
+                                    <div class="flip-card" id="hr-card">
+                                        <div class="top" id="hr-front">00</div>
+                                        <div class="bottom" id="hr-back">00</div>
+                                    </div>
+                                    <div class="colon">:</div>
+                                    <div class="flip-card" id="min-card">
+                                        <div class="top" id="min-front">00</div>
+                                        <div class="bottom" id="min-back">00</div>
+                                    </div>
+                                    <div class="colon">:</div>
+                                    <div class="flip-card" id="sec-card">
+                                        <div class="top" id="sec-front">00</div>
+                                        <div class="bottom" id="sec-back">00</div>
+                                    </div>
+                                </div>
+
+
+                                <div class="btns">
+                                    <button onclick="startTimer()">Start</button>
+                                    <button onclick="pauseTimer()">Pause</button>
+                                    <button onclick="resetTimer()">Reset</button>
+                                </div>
+
+                                <div class="timer-settings">
+                                    <label for="preset-select">Choose Duration:</label>
+                                    <select id="preset-select">
+                                        <option value="1500">25 min (Pomodoro)</option>
+                                        <option value="3600">1 hour</option>
+                                        <option value="10800">3 hours (NEET Practice)</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                    <input type="number" id="custom-minutes" placeholder="Enter minutes"
+                                        style="display:none; margin-top: 0.5rem;" />
+                                </div>
+                            </div>
+                            <!-- <script type="module">
+                                import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+                                import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+                                import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+                                const firebaseConfig = {
+                                    apiKey: "AIzaSyBatUKafjs0bZ-yRHbTksk8v9vY8qfQyN0",
+                                    authDomain: "neet-tracker-bef77.firebaseapp.com",
+                                    projectId: "neet-tracker-bef77",
+                                    storageBucket: "neet-tracker-bef77.firebasestorage.app",
+                                    messagingSenderId: "1059208833075",
+                                    appId: "1:1059208833075:web:801f8012489d9dc660db46",
+                                    measurementId: "G-7N095EV8P9"
+                                };
+
+                                // Initialize Firebase
+                                const app = initializeApp(firebaseConfig);
+                                const analytics = getAnalytics(app);
+                                const db = getFirestore(app); // 🔥 Firestore
+
+                                // 📌 Add Difficulty Log Function
+                                document.getElementById("save-difficulty").addEventListener("click", async () => {
+                                    const subject = document.getElementById("subject").value;
+                                    const chapter = document.getElementById("chapter").value;
+                                    const note = document.getElementById("difficulty-note").value;
+                                    const level = document.getElementById("level").value;
+
+                                    if (!subject || !chapter || !note || !level) {
+                                        alert("Please fill all fields!");
+                                        return;
+                                    }
+
+                                    try {
+                                        await addDoc(collection(db, "difficultyLogs"), {
+                                            subject,
+                                            chapter,
+                                            note,
+                                            level,
+                                            timestamp: serverTimestamp(),
+                                        });
+                                        alert("✅ Difficulty saved!");
+                                        // Optionally clear fields
+                                        document.getElementById("difficulty-note").value = "";
+                                        document.getElementById("level").value = "Easy";
+                                    } catch (e) {
+                                        console.error("❌ Error adding document: ", e);
+                                        alert("Failed to save. Check console for details.");
+                                    }
+                                });
+                            </script> -->
+
+
+
+                        </div>
+                        <div class="lofi-player">
+                            <h2>🎵 Miyu’s Music Mode</h2>
+
+                            <div class="music-toggle">
+                                <button onclick="showLofi()">🌸 Lofi Vibes</button>
+                                <button onclick="showMotivation()">🔥 Song Mode</button>
+                            </div>
+
+                            <div id="lofi-section">
+                                <iframe width="100%" height="166"
+                                    src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&loop=1&playlist=jfKfPfyJRdk"
+                                    title="Lofi Girl – beats to relax/study to" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+
+                            <div id="motivation-section" style="display: none;">
+                                <div class="video-buttons">
+                                    <button onclick="loadVideo('V-qcywY7LRs')">Je te laisserai des mots</button>
+                                    <button onclick="loadVideo('r0McrrrFNtA')">Atlantis</button>
+                                    <button onclick="loadVideo('kFp-2UxBiYE')">Cry- Cigarettes after S*x</button>
+                                </div>
+                                <iframe id="motivational-video" width="100%" height="315"
+                                    src="https://www.youtube.com/embed/V-qcywY7LRs" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
                             </div>
                         </div>
 
+                        <div class="bio-pdfs">
+                            <!-- 📘 Class 11 Biology PDFs (Kebo) -->
+                            <h2>Class 11 Biology Chapters</h2>
+                            <ul>
+                                <li><a href="assets/pdfs/kebo/kebo101.pdf" target="_blank">01 - The Living World</a>
+                                </li>
+                                <li><a href="assets/pdfs/kebo/kebo102.pdf" target="_blank">02 - Biological
+                                        Classification</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo103.pdf" target="_blank">03 - Plant Kingdom</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo104.pdf" target="_blank">04 - Animal Kingdom</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo105.pdf" target="_blank">05 - Morphology of Flowering
+                                        Plants</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo106.pdf" target="_blank">06 - Anatomy of Flowering
+                                        Plants</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo107.pdf" target="_blank">07 - Structural Organisation
+                                        in Animals</a>
+                                </li>
+                                <li><a href="assets/pdfs/kebo/kebo108.pdf" target="_blank">08 - Cell: The Unit of
+                                        Life</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo109.pdf" target="_blank">09 - Biomolecules</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo110.pdf" target="_blank">10 - Cell Cycle and Cell
+                                        Division</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo111.pdf" target="_blank">11 - Photosynthesis in Higher
+                                        Plants</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo112.pdf" target="_blank">12 - Respiration in
+                                        Plants</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo113.pdf" target="_blank">13 - Plant Growth and
+                                        Development</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo114.pdf" target="_blank">14 - Breathing and Exchange
+                                        of Gases</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo115.pdf" target="_blank">15 - Body Fluids and
+                                        Circulation</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo116.pdf" target="_blank">16 - Excretory Products and
+                                        their
+                                        Elimination</a>
+                                </li>
+                                <li><a href="assets/pdfs/kebo/kebo117.pdf" target="_blank">17 - Locomotion and
+                                        Movement</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo118.pdf" target="_blank">18 - Neural Control and
+                                        Coordination</a></li>
+                                <li><a href="assets/pdfs/kebo/kebo119.pdf" target="_blank">19 - Chemical Coordination
+                                        and
+                                        Integration</a>
+                                </li>
+                            </ul>
+
+                            <!-- 📗 Class 12 Biology PDFs (Lebo) -->
+                            <h2>Class 12 Biology Chapters</h2>
+                            <ul>
+                                <li><a href="assets/pdfs/lebo/lebo101.pdf" target="_blank">01 - Sexual Reproduction in
+                                        Flowering
+                                        Plants</a>
+                                </li>
+                                <li><a href="assets/pdfs/lebo/lebo102.pdf" target="_blank">02 - Human Reproduction</a>
+                                </li>
+                                <li><a href="assets/pdfs/lebo/lebo103.pdf" target="_blank">03 - Reproductive Health</a>
+                                </li>
+                                <li><a href="assets/pdfs/lebo/lebo104.pdf" target="_blank">04 - Principles of
+                                        Inheritance and
+                                        Variation</a>
+                                </li>
+                                <li><a href="assets/pdfs/lebo/lebo105.pdf" target="_blank">05 - Molecular Basis of
+                                        Inheritance</a></li>
+                                <li><a href="assets/pdfs/lebo/lebo106.pdf" target="_blank">06 - Evolution</a></li>
+                                <li><a href="assets/pdfs/lebo/lebo107.pdf" target="_blank">07 - Human Health and
+                                        Disease</a></li>
+                                <li><a href="assets/pdfs/lebo/lebo108.pdf" target="_blank">08 - Microbes in Human
+                                        Welfare</a></li>
+                                <li><a href="assets/pdfs/lebo/lebo109.pdf" target="_blank">09 - Biotechnology -
+                                        Principles and
+                                        Processes</a>
+                                </li>
+                                <li><a href="assets/pdfs/lebo/lebo110.pdf" target="_blank">10 - Biotechnology and its
+                                        Applications</a>
+                                </li>
+                                <li><a href="assets/pdfs/lebo/lebo111.pdf" target="_blank">11 - Organisms and
+                                        Populations</a></li>
+                                <li><a href="assets/pdfs/lebo/lebo112.pdf" target="_blank">12 - Ecosystem</a></li>
+                                <li><a href="assets/pdfs/lebo/lebo113.pdf" target="_blank">13 - Biodiversity and its
+                                        Conservation</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <!-- <div class="weekly-planner">
+                            <h2>📅 Weekly Planner</h2>
+
+                            <div class="days">
+                                <div class="day">
+                                    <h3>Monday</h3>
+                                    <textarea id="monday" placeholder="Write your goals..."></textarea>
+                                </div>
+                                <div class="day">
+                                    <h3>Tuesday</h3>
+                                    <textarea id="tuesday" placeholder="Write your goals..."></textarea>
+                                </div>
+                                <div class="day">
+                                    <h3>Wednesday</h3>
+                                    <textarea id="wednesday" placeholder="Write your goals..."></textarea>
+                                </div>
+                                <div class="day">
+                                    <h3>Thursday</h3>
+                                    <textarea id="thursday" placeholder="Write your goals..."></textarea>
+                                </div>
+                                <div class="day">
+                                    <h3>Friday</h3>
+                                    <textarea id="friday" placeholder="Write your goals..."></textarea>
+                                </div>
+                                <div class="day">
+                                    <h3>Saturday</h3>
+                                    <textarea id="saturday" placeholder="Write your goals..."></textarea>
+                                </div>
+                                <div class="day">
+                                    <h3>Sunday</h3>
+                                    <textarea id="sunday" placeholder="Write your goals..."></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="calendar-roadmap">
+                                <h2>🗓️ Miyu's NEET Calendar Roadmap</h2>
+
+                                <details>
+                                    <summary>July 2025</summary>
+                                    <div id="july-calendar" class="month-grid"></div>
+                                </details>
+
+                                <details>
+                                    <summary>August 2025</summary>
+                                    <div id="august-calendar" class="month-grid"></div>
+                                </details>
+
+                                <details>
+                                    <summary>September 2025</summary>
+                                    <div id="september-calendar" class="month-grid"></div>
+                                </details>
+
+                                <details>
+                                    <summary>October 2025</summary>
+                                    <div id="october-calendar" class="month-grid"></div>
+                                </details>
+
+                                <details>
+                                    <summary>November 2025</summary>
+                                    <div id="november-calendar" class="month-grid"></div>
+                                </details>
+
+                                <details>
+                                    <summary>December 2025</summary>
+                                    <div id="december-calendar" class="month-grid"></div>
+                                </details>
+                            </div> -->
 
                     </div>
-                    <div class="lofi-player">
-                        <h2>🎵 Miyu’s Music Mode</h2>
-
-                        <div class="music-toggle">
-                            <button onclick="showLofi()">🌸 Lofi Vibes</button>
-                            <button onclick="showMotivation()">🔥 Song Mode</button>
-                        </div>
-
-                        <div id="lofi-section">
-                            <iframe width="100%" height="166"
-                                src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&loop=1&playlist=jfKfPfyJRdk"
-                                title="Lofi Girl – beats to relax/study to" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-
-                        <div id="motivation-section" style="display: none;">
-                            <div class="video-buttons">
-                                <button onclick="loadVideo('V-qcywY7LRs')">Je te laisserai des mots</button>
-                                <button onclick="loadVideo('r0McrrrFNtA')">Atlantis</button>
-                                <button onclick="loadVideo('kFp-2UxBiYE')">Cry- Cigarettes after S*x</button>
-                            </div>
-                            <iframe id="motivational-video" width="100%" height="315"
-                                src="https://www.youtube.com/embed/V-qcywY7LRs" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <div class="bio-pdfs">
-                        <!-- 📘 Class 11 Biology PDFs (Kebo) -->
-                        <h2>Class 11 Biology Chapters</h2>
-                        <ul>
-                            <li><a href="assets/pdfs/kebo/kebo101.pdf" target="_blank">01 - The Living World</a>
-                            </li>
-                            <li><a href="assets/pdfs/kebo/kebo102.pdf" target="_blank">02 - Biological
-                                    Classification</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo103.pdf" target="_blank">03 - Plant Kingdom</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo104.pdf" target="_blank">04 - Animal Kingdom</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo105.pdf" target="_blank">05 - Morphology of Flowering
-                                    Plants</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo106.pdf" target="_blank">06 - Anatomy of Flowering
-                                    Plants</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo107.pdf" target="_blank">07 - Structural Organisation
-                                    in Animals</a>
-                            </li>
-                            <li><a href="assets/pdfs/kebo/kebo108.pdf" target="_blank">08 - Cell: The Unit of
-                                    Life</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo109.pdf" target="_blank">09 - Biomolecules</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo110.pdf" target="_blank">10 - Cell Cycle and Cell
-                                    Division</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo111.pdf" target="_blank">11 - Photosynthesis in Higher
-                                    Plants</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo112.pdf" target="_blank">12 - Respiration in
-                                    Plants</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo113.pdf" target="_blank">13 - Plant Growth and
-                                    Development</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo114.pdf" target="_blank">14 - Breathing and Exchange
-                                    of Gases</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo115.pdf" target="_blank">15 - Body Fluids and
-                                    Circulation</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo116.pdf" target="_blank">16 - Excretory Products and
-                                    their
-                                    Elimination</a>
-                            </li>
-                            <li><a href="assets/pdfs/kebo/kebo117.pdf" target="_blank">17 - Locomotion and
-                                    Movement</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo118.pdf" target="_blank">18 - Neural Control and
-                                    Coordination</a></li>
-                            <li><a href="assets/pdfs/kebo/kebo119.pdf" target="_blank">19 - Chemical Coordination
-                                    and
-                                    Integration</a>
-                            </li>
-                        </ul>
-
-                        <!-- 📗 Class 12 Biology PDFs (Lebo) -->
-                        <h2>Class 12 Biology Chapters</h2>
-                        <ul>
-                            <li><a href="assets/pdfs/lebo/lebo101.pdf" target="_blank">01 - Sexual Reproduction in
-                                    Flowering
-                                    Plants</a>
-                            </li>
-                            <li><a href="assets/pdfs/lebo/lebo102.pdf" target="_blank">02 - Human Reproduction</a>
-                            </li>
-                            <li><a href="assets/pdfs/lebo/lebo103.pdf" target="_blank">03 - Reproductive Health</a>
-                            </li>
-                            <li><a href="assets/pdfs/lebo/lebo104.pdf" target="_blank">04 - Principles of
-                                    Inheritance and
-                                    Variation</a>
-                            </li>
-                            <li><a href="assets/pdfs/lebo/lebo105.pdf" target="_blank">05 - Molecular Basis of
-                                    Inheritance</a></li>
-                            <li><a href="assets/pdfs/lebo/lebo106.pdf" target="_blank">06 - Evolution</a></li>
-                            <li><a href="assets/pdfs/lebo/lebo107.pdf" target="_blank">07 - Human Health and
-                                    Disease</a></li>
-                            <li><a href="assets/pdfs/lebo/lebo108.pdf" target="_blank">08 - Microbes in Human
-                                    Welfare</a></li>
-                            <li><a href="assets/pdfs/lebo/lebo109.pdf" target="_blank">09 - Biotechnology -
-                                    Principles and
-                                    Processes</a>
-                            </li>
-                            <li><a href="assets/pdfs/lebo/lebo110.pdf" target="_blank">10 - Biotechnology and its
-                                    Applications</a>
-                            </li>
-                            <li><a href="assets/pdfs/lebo/lebo111.pdf" target="_blank">11 - Organisms and
-                                    Populations</a></li>
-                            <li><a href="assets/pdfs/lebo/lebo112.pdf" target="_blank">12 - Ecosystem</a></li>
-                            <li><a href="assets/pdfs/lebo/lebo113.pdf" target="_blank">13 - Biodiversity and its
-                                    Conservation</a>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <div class="weekly-planner">
-                        <h2>📅 Weekly Planner</h2>
-
-                        <div class="days">
-                            <div class="day">
-                                <h3>Monday</h3>
-                                <textarea id="monday" placeholder="Write your goals..."></textarea>
-                            </div>
-                            <div class="day">
-                                <h3>Tuesday</h3>
-                                <textarea id="tuesday" placeholder="Write your goals..."></textarea>
-                            </div>
-                            <div class="day">
-                                <h3>Wednesday</h3>
-                                <textarea id="wednesday" placeholder="Write your goals..."></textarea>
-                            </div>
-                            <div class="day">
-                                <h3>Thursday</h3>
-                                <textarea id="thursday" placeholder="Write your goals..."></textarea>
-                            </div>
-                            <div class="day">
-                                <h3>Friday</h3>
-                                <textarea id="friday" placeholder="Write your goals..."></textarea>
-                            </div>
-                            <div class="day">
-                                <h3>Saturday</h3>
-                                <textarea id="saturday" placeholder="Write your goals..."></textarea>
-                            </div>
-                            <div class="day">
-                                <h3>Sunday</h3>
-                                <textarea id="sunday" placeholder="Write your goals..."></textarea>
-                            </div>
-
-                        </div>
-
-                        <div class="calendar-roadmap">
-                            <h2>🗓️ Miyu's NEET Calendar Roadmap</h2>
-
-                            <details>
-                                <summary>July 2025</summary>
-                                <div id="july-calendar" class="month-grid"></div>
-                            </details>
-
-                            <details>
-                                <summary>August 2025</summary>
-                                <div id="august-calendar" class="month-grid"></div>
-                            </details>
-
-                            <details>
-                                <summary>September 2025</summary>
-                                <div id="september-calendar" class="month-grid"></div>
-                            </details>
-
-                            <details>
-                                <summary>October 2025</summary>
-                                <div id="october-calendar" class="month-grid"></div>
-                            </details>
-
-                            <details>
-                                <summary>November 2025</summary>
-                                <div id="november-calendar" class="month-grid"></div>
-                            </details>
-
-                            <details>
-                                <summary>December 2025</summary>
-                                <div id="december-calendar" class="month-grid"></div>
-                            </details>
-                        </div>
-
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar"></div>
                     </div>
                     <div class="progress-tracker">
                         <h2>📊 Progress Tracker</h2>
@@ -665,8 +768,114 @@
 
                     <footer>Made with 🖤 by Aayush for Miyu</footer>
                 </div>
-                <script src="roadmap.js"></script>
+                <!-- <script src="roadmap.js"></script> -->
+                <!-- Add Firebase SDK to HTML before your script.js -->
+                <!-- Firebase App (compat version) -->
+                <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+                <!-- Firebase Firestore (compat version) -->
+                <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+                <script src="syllabus.js"></script>
+                <script src="tracker.js"></script>
                 <script src="script.js"></script>
+                <!-- Firebase App -->
+                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+                <!-- Firebase Firestore -->
+                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyBatUKafjs0bZ-yRHbTksk8v9vY8qfQyN0",
+                            authDomain: "neet-tracker-bef77.firebaseapp.com",
+                            projectId: "neet-tracker-bef77",
+                            storageBucket: "neet-tracker-bef77.appspot.com",
+                            messagingSenderId: "1059208833075",
+                            appId: "1:1059208833075:web:801f8012489d9dc660db46",
+                            measurementId: "G-7N095EV8P9"
+                        };
+
+                        firebase.initializeApp(firebaseConfig);
+                        const db = firebase.firestore();
+
+                        // const syllabus = {
+                        //     Physics: [
+                        //         "Units and Measurements",
+                        //         "Kinematics",
+                        //         "Laws of Motion",
+                        //         "Work, Energy and Power",
+                        //         "System of Particles and Rotational Motion",
+                        //         "Gravitation",
+                        //         "Thermodynamics",
+                        //         "Oscillations and Waves",
+                        //         "Electrostatics",
+                        //         "Current Electricity"
+                        //     ],
+                        //     Chemistry: [
+                        //         "Some Basic Concepts of Chemistry",
+                        //         "Structure of Atom",
+                        //         "Classification of Elements",
+                        //         "Chemical Bonding",
+                        //         "States of Matter"
+                        //     ],
+                        //     Biology: [
+                        //         "Diversity of Living Organisms",
+                        //         "Structural Organisation in Animals and Plants",
+                        //         "Cell Structure and Function",
+                        //         "Plant Physiology",
+                        //         "Human Physiology"
+                        //     ]
+                        // };
+
+                        const subjectEl = document.getElementById("subject");
+                        const chapterEl = document.getElementById("chapter");
+
+                        function populateChapters() {
+                            const subject = subjectEl.value;
+                            chapterEl.innerHTML = "";
+                            if (syllabus[subject]) {
+                                syllabus[subject].forEach(ch => {
+                                    const option = document.createElement("option");
+                                    option.value = ch;
+                                    option.textContent = ch;
+                                    chapterEl.appendChild(option);
+                                });
+                            }
+                        }
+
+                        subjectEl.addEventListener("change", populateChapters);
+                        populateChapters(); // Initial population
+
+                        document.getElementById("save-difficulty").addEventListener("click", async () => {
+                            const subject = subjectEl.value;
+                            const chapter = chapterEl.value;
+                            const note = document.getElementById("difficulty-note").value.trim();
+                            const level = document.getElementById("level").value;
+
+                            if (!note) {
+                                alert("Please enter a difficulty note.");
+                                return;
+                            }
+
+                            try {
+                                await db.collection("difficultyLogs").add({
+                                    subject,
+                                    chapter,
+                                    note,
+                                    level,
+                                    timestamp: new Date()
+                                });
+                                alert("Saved successfully!");
+                                document.getElementById("difficulty-note").value = "";
+                            } catch (err) {
+                                console.error("Error saving data:", err);
+                                alert("Something went wrong. Try again.");
+                            }
+                        });
+                    });
+                </script>
+
+
 
 
 </body>
