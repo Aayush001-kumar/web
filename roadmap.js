@@ -1,3 +1,5 @@
+console.log("✅ Roadmap.js loaded");
+
 const neetRoadmap = {
   "2025-08-06": {
     label: "Day 1 (Aug 1 – Thursday)",
