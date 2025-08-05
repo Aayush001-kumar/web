@@ -101,3 +101,24 @@ function updateProgressBar() {
 }
 
 window.onload = updateProgressBar;
+
+window.addEventListener("DOMContentLoaded", () => {
+  const today = new Date().toISOString().split("T")[0];
+  const tasks = roadmap[today];
+
+  const taskBox = document.getElementById("daily-task-box");
+
+  if (!taskBox) return;
+
+  if (tasks && tasks.length > 0) {
+    const list = document.createElement("ul");
+    tasks.forEach(task => {
+      const li = document.createElement("li");
+      li.textContent = task;
+      list.appendChild(li);
+    });
+    taskBox.appendChild(list);
+  } else {
+    taskBox.innerHTML = `<p>No task assigned for today.</p>`;
+  }
+});
