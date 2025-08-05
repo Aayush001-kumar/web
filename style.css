@@ -150,117 +150,6 @@ footer {
     background-color: #444;
 }
 
-/* .weekly-planner {
-    margin-top: 2rem;
-    background-color: #1e1e1e;
-    padding: 1.5rem;
-    border-radius: 10px;
-}
-
-.days {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.day {
-    background-color: #2b2b2b;
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.day h3 {
-    margin-top: 0;
-    color: #ffd6a5;
-}
-
-.day textarea {
-    width: 100%;
-    height: 80px;
-    border: none;
-    border-radius: 6px;
-    padding: 0.5rem;
-    background-color: #1a1a1a;
-    color: white;
-    resize: none;
-}
-
-.calendar-roadmap {
-    margin-top: 2rem;
-    background-color: #1e1e1e;
-    padding: 1.5rem;
-    border-radius: 10px;
-}
-
-.month-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.day-box {
-    background-color: #2b2b2b;
-    border-radius: 8px;
-    padding: 0.5rem;
-    text-align: center;
-    cursor: pointer;
-    color: white;
-    font-size: 0.8rem;
-    position: relative;
-}
-
-.day-box:hover {
-    background-color: #3c3c3c;
-}
-
-.day-box textarea {
-    width: 100%;
-    margin-top: 0.3rem;
-    background-color: #1a1a1a;
-    color: white;
-    border: none;
-    padding: 0.3rem;
-    border-radius: 6px;
-    resize: vertical;
-    font-size: 0.75rem;
-} */
-
-/* .calendar-roadmap details {
-    margin-top: 1rem;
-    background-color: #2c2c2c;
-    border-radius: 8px;
-    padding: 0.8rem;
-}
-
-.calendar-roadmap summary {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffd6a5;
-    cursor: pointer;
-} */
- /* #progress-bar-wrapper {
-  width: 100%;
-  height: 25px;
-  background-color: #eee;
-  border-radius: 20px;
-  margin: 10px 0;
-  overflow: hidden;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-}
-#progress-bar {
-  height: 100%;
-  background-color: #4caf50;
-  width: 0%;
-  border-radius: 20px;
-  transition: width 0.4s ease-in-out;
-}
-#progress-percent {
-  font-weight: bold;
-  font-size: 1.1em;
-} */
-
 /* Progress Bar */
 .progress-container {
     width: 100%;
@@ -364,37 +253,6 @@ summary {
     margin: 0.3rem 0;
 }
 
-.calendar-view {
-    margin-top: 2rem;
-    background: #1b1b1b;
-    padding: 1.5rem;
-    border-radius: 12px;
-    color: #f0f0f0;
-}
-
-.calendar-view h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #ffd6a5;
-}
-
-.calendar-view summary {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #a5d6ff;
-    margin-top: 1rem;
-    cursor: pointer;
-}
-
-.calendar-view ul {
-    padding-left: 1.5rem;
-    margin: 0.5rem 0 1rem;
-}
-
-.calendar-view li {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-}
 
 /* Highlighted chapter when clicked from roadmap */
 .highlight {
@@ -444,15 +302,6 @@ body::before {
     -webkit-backdrop-filter: blur(10px) brightness(0.4);
     z-index: -1;
 }
-
-/* .quote {
-    text-align: center;
-    font-style: italic;
-    margin-bottom: 2rem;
-    color: #ccc;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-} */
 
 .flip-clock {
     display: flex;
@@ -582,19 +431,6 @@ body::before {
     transition: opacity 2s ease-in-out;
 }
 
-/*#anime-quote {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #ffd6a5;
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  margin-top: 1rem;
-  font-style: italic;
-  font-size: 1.1rem;
-  text-align: center;
-  z-index: 10;
-  position: relative;
-  transition: opacity 2s ease-in-out;
-} */
 
 #anime-quote {
     background-color: rgba(30, 30, 30, 0.6);
@@ -1007,4 +843,88 @@ button:hover,
   border-radius: 8px;
   color: white;
 }
+
+.calendar-timeline {
+    padding: 2rem;
+    background: #1c1c1c; /* Darker background */
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255,255,255,0.05); /* Lighter shadow for dark mode */
+}
+
+.timeline {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.month-block {
+    min-width: 250px;
+    flex: 0 0 auto;
+    background-color: #2c2f33; /* Dark background for individual blocks */
+    border-left: 5px solid #e91e63; /* Pink accent color for the border */
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Stronger shadow to stand out on dark */
+}
+
+.month-block h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #fff; /* White text */
+}
+
+.month-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.month-block li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.month-block .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #e91e63; /* Pink accent color */
+    border-radius: 50%;
+    margin-top: 6px;
+}
+
+.week-content {
+    font-size: 0.95rem;
+    color: #ccc; /* Light grey text */
+    line-height: 1.4;
+}
+
+/* 🎨 Custom Scrollbar Styling for Timeline */
+.timeline::-webkit-scrollbar {
+    height: 10px;
+}
+
+.timeline::-webkit-scrollbar-track {
+    background: #1a1a1a; 
+    border-radius: 10px;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+    background: #e91e63;  /* Pink highlight */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.timeline::-webkit-scrollbar-thumb:hover {
+    background: #ff5c8a;  /* Brighter pink on hover */
+}
+
+/* Firefox scrollbar support */
+.timeline {
+    scrollbar-width: thin;
+    scrollbar-color: #e91e63 #1a1a1a;
+}
+
 
