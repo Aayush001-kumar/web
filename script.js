@@ -544,3 +544,12 @@ if (!taskData) {
   taskBox.innerHTML = "<p>No task scheduled for today 📭</p>";
   console.warn(`No task found for ${todayStr} in neetRoadmap`);
 }
+
+const { subject, chapter, topics, task, videos = [] } = taskData;
+
+let videoHTML = "";
+if (videos.length > 0) {
+  videoHTML = `<p><strong>📽️ Videos:</strong><ul>` +
+    videos.map(url => `<li><a href="${url}" target="_blank">${url}</a></li>`).join("") +
+    `</ul></p>`;
+}
