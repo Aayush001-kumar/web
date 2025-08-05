@@ -540,3 +540,7 @@ populateChapters(); // Call on page load
 
 updateProgressBar();
 
+if (!taskData) {
+  taskBox.innerHTML = "<p>No task scheduled for today 📭</p>";
+  console.warn(`No task found for ${todayStr} in neetRoadmap`);
+}
